@@ -1,26 +1,161 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-serif-wedding: var(--font-cormorant), serif;
+  --font-script-wedding: var(--font-great-vibes), cursive;
+  --font-display-wedding: var(--font-cinzel), serif;
+
+  --color-maroon-50: #fbf2f3;
+  --color-maroon-100: #f7e3e6;
+  --color-maroon-200: #f0ccd2;
+  --color-maroon-300: #e2a6b2;
+  --color-maroon-400: #d0778c;
+  --color-maroon-500: #ba4e69;
+  --color-maroon-600: #a03750;
+  --color-maroon-700: #85263d;
+  --color-maroon-800: #702133;
+  --color-maroon-900: #5d1c2b;
+  --color-maroon-950: #340c14;
+
+  --color-saffron-50: #fff7ed;
+  --color-saffron-100: #ffeed6;
+  --color-saffron-200: #ffd8ad;
+  --color-saffron-300: #ffb875;
+  --color-saffron-400: #ff913d;
+  --color-saffron-500: #f58220; /* Marigold Orange */
+  --color-saffron-600: #ea580c;
+  --color-saffron-700: #c2410c;
+
+  --color-gold-50: #fbfbf3;
+  --color-gold-100: #f6f3d9;
+  --color-gold-200: #eee7b5;
+  --color-gold-300: #e3d588;
+  --color-gold-400: #d7bf5c;
+  --color-gold-500: #d4af37; /* Metallic Gold */
+  --color-gold-600: #b08d27;
+  --color-gold-700: #8c6a1b;
+
+  --color-cream-light: #fdfdfb;
+  --color-cream-wedding: #fcf8f2;
+  --color-charcoal-wedding: #2d2522;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom background paper texture */
+.bg-wedding-paper {
+  background-color: #fdfbf7;
+  background-image: 
+    radial-gradient(circle at 100% 150%, #fcf8f2 24%, #fdfbf7 25%, #fdfbf7 28%, #fcf8f2 29%, #fcf8f2 36%, #fdfbf7 36%, #fdfbf7 40%, transparent 40%, transparent),
+    radial-gradient(circle at 0% 150%, #fcf8f2 24%, #fdfbf7 25%, #fdfbf7 28%, #fcf8f2 29%, #fcf8f2 36%, #fdfbf7 36%, #fdfbf7 40%, transparent 40%, transparent),
+    radial-gradient(circle at 50% 100%, #f7f1e6 10%, #fdfbf7 11%, #fdfbf7 23%, #f7f1e6 24%, #f7f1e6 30%, #fdfbf7 30%, transparent 30%, transparent);
+  background-size: 100px 50px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Elegant gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f3d588 0%, #d4af37 40%, #b08d27 70%, #f6f3d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ornate gold border utility */
+.border-gold-ornate {
+  border: 2px double #d4af37;
+  position: relative;
+}
+
+.border-gold-ornate::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  pointer-events: none;
+}
+
+/* Custom curtain folding texture overlay */
+.bg-curtain-folds {
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.5) 0%,
+    rgba(255,255,255,0.05) 10%,
+    rgba(0,0,0,0.3) 20%,
+    rgba(255,255,255,0.05) 30%,
+    rgba(0,0,0,0.4) 40%,
+    rgba(255,255,255,0.05) 50%,
+    rgba(0,0,0,0.4) 60%,
+    rgba(255,255,255,0.05) 70%,
+    rgba(0,0,0,0.3) 80%,
+    rgba(255,255,255,0.05) 90%,
+    rgba(0,0,0,0.5) 100%
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+}
+
+/* Scroll styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fdfbf7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b08d27;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-cormorant), serif;
+  overflow-x: hidden;
+  color: #2d2522;
 }
+
+/* Rotate animation for mandala */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+/* Micro pulse for the music button */
+@keyframes ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+.animate-ring-pulse {
+  animation: ring-pulse 2s infinite;
+}
+
+/* Hide increment/decrement arrows on number inputs for Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide increment/decrement arrows on number inputs for Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
