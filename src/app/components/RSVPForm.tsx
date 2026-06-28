@@ -35,7 +35,8 @@ export default function RSVPForm() {
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<RSVPFormData>({
-    resolver: zodResolver(rsvpSchema),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: zodResolver(rsvpSchema) as any,
     defaultValues: {
       attendance: "attending",
       guestsCount: 1,
