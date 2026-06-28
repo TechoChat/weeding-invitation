@@ -23,9 +23,7 @@ try {
 }
 
 const nextConfig: NextConfig = {
-  experimental: {
-    allowedDevOrigins: ['10.43.110.113'],
-  } as any,
+  /* config options here */
 };
 
 export default nextConfig;

@@ -12,7 +12,7 @@ const rsvpSchema = z.object({
   name: z.string().min(2, { message: "Please enter your full name." }),
   email: z.string().email({ message: "Please enter a valid email address." }).optional().or(z.literal("")),
   attendance: z.enum(["attending", "declined"], {
-    errorMap: () => ({ message: "Please select your attendance status." }),
+    message: "Please select your attendance status.",
   }),
   events: z.object({
     mehndi: z.boolean().default(false),
